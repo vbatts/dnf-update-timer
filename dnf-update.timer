@@ -1,0 +1,11 @@
+[Unit]
+Description=dnf update timer
+ConditionKernelCommandLine=!rd.live.image
+
+[Timer]
+OnCalendar=daily
+OnUnitInactiveSec=1h
+Unit=dnf-update.service
+
+[Install]
+WantedBy=default.target
