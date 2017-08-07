@@ -1,0 +1,11 @@
+[Unit]
+Description=yum update timer
+ConditionKernelCommandLine=!rd.live.image
+
+[Timer]
+OnCalendar=daily
+OnUnitInactiveSec=1h
+Unit=yum-update.service
+
+[Install]
+WantedBy=default.target
