@@ -3,7 +3,7 @@ pwd := $(shell pwd)
 
 all: rpm srpm
 
-	
+
 rpm:
 	rpmbuild \
 		--define '_sourcedir $(pwd)' \

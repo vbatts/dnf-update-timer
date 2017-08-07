@@ -1,6 +1,6 @@
 Name:           dnf-update-timer
 Version:        0.0.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        ensure that `dnf update` is run daily
 
 License:        gplv2
@@ -10,7 +10,11 @@ Source1:        dnf-update.timer
 
 BuildArch:      noarch
 
+%if 0%{?rhel} > 6
+Requires:       yum
+%else
 Requires:       dnf
+%endif
 Requires:       systemd
 
 %description
@@ -19,9 +23,9 @@ Requires:       systemd
 %install
 rm -rf $RPM_BUILD_ROOT
 
-mkdir -p $RPM_BUILD_ROOT%{_unitdir}
-cp -av %{SOURCE0} $RPM_BUILD_ROOT%{_unitdir}/dnf-update.service
-cp -av %{SOURCE1} $RPM_BUILD_ROOT%{_unitdir}/dnf-update.timer
+mkdir -p $RPM_BUILD_ROOT/%{_unitdir}
+cp -av %{SOURCE0} $RPM_BUILD_ROOT/%{_unitdir}/dnf-update.service
+cp -av %{SOURCE1} $RPM_BUILD_ROOT/%{_unitdir}/dnf-update.timer
 
 %post
 %{_bindir}/systemctl enable dnf-update.timer
