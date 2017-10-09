@@ -8,4 +8,4 @@ OnUnitInactiveSec=1h
 Unit=yum-update.service
 
 [Install]
-WantedBy=default.target
+WantedBy=timers.target

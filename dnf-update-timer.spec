@@ -1,6 +1,6 @@
 Name:           dnf-update-timer
-Version:        0.0.1
-Release:        4%{?dist}
+Version:        0.0.2
+Release:        1%{?dist}
 Summary:        ensure that `dnf update` is run daily
 
 License:        gplv2
