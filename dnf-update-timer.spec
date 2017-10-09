@@ -41,8 +41,10 @@ cp -av %{SOURCE1} $RPM_BUILD_ROOT/%{_unitdir}/dnf-update.timer
 %post
 %if 0%{?rhel} > 6
 %{_bindir}/systemctl enable yum-update.timer
+%{_bindir}/systemctl restart yum-update.timer
 %else
 %{_bindir}/systemctl enable dnf-update.timer
+%{_bindir}/systemctl restart dnf-update.timer
 %endif
 
 %preun
